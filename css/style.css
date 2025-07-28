@@ -7,10 +7,16 @@ body {
   color: var(--color-light-1);
 }
 
+.categories {
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   padding: 15px 10px;
   background-color: var(--color-dark-1);
-  block-size: 100vh;
+  flex: 1;
 }
 
 /* Header */
