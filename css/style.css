@@ -7,16 +7,8 @@ body {
   color: var(--color-light-1);
 }
 
-/* .categories {
-  min-block-size: 100dvh;
-  display: flex;
-  flex-direction: column;
-} */
-
 .main {
   padding: 15px 10px;
-  /* background-color: var(--color-dark-1);
-  flex: 1; */
 }
 
 /* Header */
