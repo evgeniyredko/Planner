@@ -1,0 +1,195 @@
+body {
+  margin: 0 auto;
+  font-family: var(--font-family);
+  background-color: var(--color-dark-1);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-light-1);
+}
+
+.main {
+  margin: 15px 10px;
+}
+
+/* Header */
+.header {
+  background-color: var(--color-dark-2);
+  color: var(--color-light-2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__left {
+  padding: 21px 20px 19px 20px;
+  max-block-size: 64px;
+}
+
+.header__title {
+  color: var(--color-light-1);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  padding-block: 23px 17px;
+}
+
+.header__button-menu {
+  background-color: transparent;
+  border: none;
+  inline-size: 64px;
+}
+
+.header__right {
+  padding-block: 24px 16px;
+}
+
+/* Add */
+.add {
+  position: relative;
+}
+
+.add::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  inline-size: 20px;
+  block-size: 20px;
+  background-image: url("./../assets/icons/plus.png");
+  background-repeat: no-repeat;
+}
+
+.add__input {
+  background-color: var(--color-dark-2);
+  border-radius: 10px;
+  inline-size: 100%;
+  padding: 20px 20px 20px 60px;
+  display: block;
+}
+
+.add__input::placeholder {
+  color: var(--color-grey-2);
+}
+
+.add__input:focus {
+  outline: 1px solid var(--color-red-1);
+  caret-color: var(--color-red-1);
+}
+
+/* List */
+.list {
+  margin-block-start: 25px;
+}
+
+.list__title {
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  letter-spacing: -0.04em;
+  color: var(--color-grey-2);
+  margin-inline-start: 15px;
+}
+
+.list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-block-start: 6px;
+}
+
+.list__item {
+  background-color: var(--color-dark-2);
+  border-radius: 10px;
+  display: flex;
+}
+
+.list__item:has(.list__text:focus) {
+  outline: 1px solid var(--color-red-1);
+}
+
+.list__text {
+  padding-block: 16px 14px;
+  inline-size: 100%;
+}
+
+.list__delete {
+  position: relative;
+  block-size: 22px;
+  inline-size: 22px;
+  background-color: var(--color-red-2);
+  display: block;
+  border-radius: 100%;
+}
+
+.list__delete::before,
+.list__delete::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  inline-size: 2px;
+  block-size: 12px;
+  background-color: var(--color-dark-2);
+  transform-origin: center;
+}
+
+.list__delete::before {
+  transform: rotate(45deg);
+}
+
+.list__delete::after {
+  transform: rotate(-45deg);
+}
+
+.list__button {
+  padding: 15px;
+}
+
+.list__button {
+  outline: none;
+}
+.list__button:focus {
+  outline: none;
+}
+
+.list__checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 15px;
+}
+
+.list__checkbox input {
+  display: none;
+}
+
+.list__checkmark {
+  block-size: 22px;
+  inline-size: 22px;
+  border: 2px solid #555;
+  border-radius: 100%;
+  display: block;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.list__checkbox input:checked + .list__checkmark {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.list__checkbox input:checked + .list__checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  inline-size: 6px;
+  block-size: 11px;
+  border: solid var(--color-dark-2);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.list__item:has(input:checked) .list__text {
+  text-decoration: line-through;
+  color: var(--color-grey-2);
+}
