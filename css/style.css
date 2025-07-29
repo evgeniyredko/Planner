@@ -132,6 +132,7 @@ main {
 .list__item {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .list__item-inner {
