@@ -56,6 +56,20 @@ function addSwipeListeners() {
     item.addEventListener("mousedown", (e) => start(e.clientX));
     item.addEventListener("mousemove", (e) => move(e.clientX));
     item.addEventListener("mouseup", end);
+    // слушатель на кнопку редактирования
+    item
+      .querySelector(".list__action--edit")
+      ?.addEventListener("click", (e) => {
+        e.stopPropagation(); // чтобы не было лишнего клика по item
+        const id = item.dataset.id;
+        const name = item.querySelector(".list__text")?.textContent.trim();
+
+        if (item.closest("#category-list")) {
+          openRenameModal(id, name, "category");
+        } else if (item.closest("#task-list")) {
+          openRenameModal(id, name, "task");
+        }
+      });
 
     // блокировка клика после свайпа
     item.addEventListener("click", (e) => {

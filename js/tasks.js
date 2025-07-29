@@ -51,6 +51,25 @@ function toggleTask(id) {
   }
 }
 
+function addTaskActionListeners() {
+  const editButtons = document.querySelectorAll(
+    ".list__action--edit[data-type='task']"
+  );
+
+  editButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // чтобы не было перехода или другого действия
+
+      const id = btn.dataset.id;
+      const task = tasks.find((t) => t.id === id);
+
+      if (task) {
+        openRenameModal(id, task.text, "task");
+      }
+    });
+  });
+}
+
 // Отрисовка задач для текущей категории
 function renderTasks() {
   taskList.innerHTML = "";
@@ -79,7 +98,7 @@ function renderTasks() {
   <div class="list__actions">
     <button class="list__action list__action--edit" data-id="${
       task.id
-    }">✏️</button>
+    }" data-type="task">✏️</button>
     <button class="list__action list__action--up" data-id="${
       task.id
     }">🔼</button>
@@ -94,6 +113,7 @@ function renderTasks() {
 
   assignTaskEvents();
   addSwipeListeners();
+  addTaskActionListeners();
 }
 
 // Обработчики для чекбоксов и удаления

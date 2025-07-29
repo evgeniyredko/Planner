@@ -10,6 +10,7 @@
     <script src="./js/swipe.js" defer></script>
     <script src="./js/categories.js" defer></script>
     <script src="./js/tasks.js" defer></script>
+    <script src="./js/modal.js" defer></script>
     <script src="./js/app.js" defer></script>
   </head>
   <body>
@@ -100,5 +101,21 @@
         </section>
       </section>
     </main>
+    <div class="modal" id="rename-modal">
+      <div class="modal__content">
+        <h2 class="modal__title">Переименовать</h2>
+        <input type="text" id="rename-input" class="modal__input" />
+        <div class="modal__buttons">
+          <button id="rename-cancel" class="modal__btn modal__btn--cancel">
+            <img src="./assets/icons/delete.png" alt="Отмена" />
+            <span>Отмена</span>
+          </button>
+          <button id="rename-save" class="modal__btn modal__btn--save">
+            <img src="./assets/icons/check.png" alt="Сохранить" />
+            <span>Сохранить</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

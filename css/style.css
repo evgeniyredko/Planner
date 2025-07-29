@@ -130,11 +130,6 @@ main {
 }
 
 .list__item {
-  background-color: var(--color-dark-2);
-  border-radius: 10px;
-}
-
-.list__item {
   position: relative;
   overflow: hidden;
 }
@@ -146,6 +141,7 @@ main {
   transition: transform 0.3s ease;
   z-index: 1;
   position: relative;
+  border-radius: 10px;
 }
 
 .list__actions {
@@ -162,7 +158,7 @@ main {
 }
 
 .list__item--active .list__item-inner {
-  transform: translateX(-120px); /* или ширина всех кнопок */
+  transform: translateX(-120px); /* Ширина свайпа */
 }
 
 .list__item:has(.list__text:focus) {
@@ -259,4 +255,78 @@ main {
 .list__item:has(input:checked) .list__text {
   text-decoration: line-through;
   color: var(--color-grey-2);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal--visible {
+  display: flex;
+}
+
+.modal__content {
+  background: var(--color-dark-1);
+  padding: 25px;
+  border-radius: 1rem;
+  width: 100%;
+  margin-inline: 30px;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal__title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  outline: 1px solid var(--color-grey-1);
+  border-radius: 0.5rem;
+  background: var(--color-dark-2);
+  text-align: center;
+}
+
+.modal__input:focus {
+  outline: 1px solid var(--color-red-1);
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.modal__btn {
+  padding: 15px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background: var(--color-dark-2);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.modal__btn--cancel {
+  color: var(--color-light-1);
+}
+
+.modal__btn--save {
+  color: var(--color-light-1);
 }

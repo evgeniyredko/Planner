@@ -46,6 +46,23 @@ function deleteCategory(id) {
   renderCategories();
 }
 
+function addCategoryActionListeners() {
+  const editButtons = document.querySelectorAll(".list__action--edit");
+
+  editButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // чтобы не было перехода к задачам
+
+      const id = btn.dataset.id;
+      const category = categories.find((c) => c.id === id);
+
+      if (category) {
+        openRenameModal(id, category.name, "category");
+      }
+    });
+  });
+}
+
 // Отрисовка всех категорий
 function renderCategories() {
   categoryList.innerHTML = "";
@@ -53,6 +70,7 @@ function renderCategories() {
   categories.forEach((category) => {
     const li = document.createElement("li");
     li.className = "list__item";
+    li.dataset.id = category.id;
 
     li.innerHTML = `
   <div class="list__item-inner">
@@ -77,6 +95,7 @@ function renderCategories() {
   // Повторно назначаем события (после перерисовки DOM)
   assignCategoryEvents();
   addSwipeListeners();
+  addCategoryActionListeners();
 }
 
 // Слушатель на ввод
