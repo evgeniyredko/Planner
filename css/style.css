@@ -7,8 +7,40 @@ body {
   color: var(--color-light-1);
 }
 
+main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100dvh;
+}
+
 .main {
   padding: 15px 10px;
+}
+
+.categories,
+.tasks {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.categories {
+  transform: translateX(0);
+}
+
+.categories--hidden {
+  transform: translateX(-100%);
+}
+
+.tasks {
+  transform: translateX(100%);
+}
+
+.tasks--active {
+  transform: translateX(0);
+  z-index: 2;
 }
 
 /* Header */
@@ -100,16 +132,51 @@ body {
 .list__item {
   background-color: var(--color-dark-2);
   border-radius: 10px;
+}
+
+.list__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.list__item-inner {
   display: flex;
+  align-items: center;
+  background-color: var(--color-dark-2);
+  transition: transform 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.list__actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 12px;
+  background-color: var(--color-dark-1);
+  z-index: 0;
+}
+
+.list__item--active .list__item-inner {
+  transform: translateX(-120px); /* или ширина всех кнопок */
 }
 
 .list__item:has(.list__text:focus) {
   outline: 1px solid var(--color-red-1);
 }
 
+.list__img {
+  display: block;
+}
+
 .list__text {
   padding-block: 16px 14px;
   inline-size: 100%;
+  text-align: left;
 }
 
 .list__delete {
@@ -145,9 +212,7 @@ body {
   padding: 15px;
 }
 
-.list__button {
-  outline: none;
-}
+.list__button,
 .list__button:focus {
   outline: none;
 }

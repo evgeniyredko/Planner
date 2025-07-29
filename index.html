@@ -7,115 +7,98 @@
     <link rel="stylesheet" href="./css/variables.css" />
     <link rel="stylesheet" href="./css/globals.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/swipe.js" defer></script>
+    <script src="./js/categories.js" defer></script>
+    <script src="./js/tasks.js" defer></script>
+    <script src="./js/app.js" defer></script>
   </head>
   <body>
-    <section style="display: none" class="categories">
-      <header class="header">
-        <img
-          class="header__left"
-          src="./assets/icons/check.png"
-          alt="Логотип"
-        />
-        <h1 class="header__title">Планировщик</h1>
-        <button class="header__button-menu">
+    <main>
+      <section class="categories">
+        <header class="header">
           <img
-            class="header__right"
-            src="./assets/icons/ellipsis.png"
-            alt="Меню"
+            class="header__left"
+            src="./assets/icons/check.png"
+            alt="Логотип"
           />
-        </button>
-      </header>
-      <section class="main">
-        <section class="add">
-          <input
-            class="add__input"
-            name="add"
-            type="text"
-            placeholder="Добавить категорию..."
-          />
-        </section>
+          <h1 class="header__title">Планировщик</h1>
+          <button class="header__button-menu">
+            <img
+              class="header__right"
+              src="./assets/icons/ellipsis.png"
+              alt="Меню"
+            />
+          </button>
+        </header>
+        <section class="main">
+          <section class="add">
+            <input
+              class="add__input"
+              name="add"
+              type="text"
+              placeholder="Добавить категорию..."
+            />
+          </section>
 
-        <section class="list">
-          <h2 class="list__title">Категории</h2>
-          <ul class="list__items">
-            <li class="list__item">
-              <button class="list__button" data-action="change">
-                <img
-                  class="list__img"
-                  src="./assets/icons/categories/list.png"
-                  alt=""
-                />
-              </button>
-              <div class="list__text" tabindex="0">Задачи на сегодня</div>
-              <button class="list__button" data-action="delete">
-                <span class="list__delete"></span>
-              </button>
-            </li>
-            <li class="list__item">
-              <button class="list__button" data-action="change">
-                <img
-                  class="list__img"
-                  src="./assets/icons/categories/basket.png"
-                  alt=""
-                />
-              </button>
-              <div class="list__text" tabindex="0">Список покупок</div>
-              <button class="list__button" data-action="delete">
-                <span class="list__delete"></span>
-              </button>
-            </li>
-          </ul>
+          <section class="list">
+            <h2 class="list__title">Категории (2)</h2>
+            <ul class="list__items"></ul>
+          </section>
         </section>
       </section>
-    </section>
-    <section class="tasks">
-      <header class="header">
-        <img class="header__left" src="./assets/icons/back.png" alt="Логотип" />
-        <h1 class="header__title">Задачи на сегодня</h1>
-        <button class="header__button-menu">
+      <section class="tasks">
+        <header class="header">
           <img
-            class="header__right"
-            src="./assets/icons/ellipsis.png"
-            alt="Меню"
+            class="header__left"
+            src="./assets/icons/back.png"
+            alt="Логотип"
           />
-        </button>
-      </header>
-      <section class="main">
-        <section class="add">
-          <input
-            class="add__input"
-            name="add"
-            type="text"
-            placeholder="Добавить задачу..."
-          />
-        </section>
+          <h1 class="header__title">Задачи на сегодня</h1>
+          <button class="header__button-menu">
+            <img
+              class="header__right"
+              src="./assets/icons/ellipsis.png"
+              alt="Меню"
+            />
+          </button>
+        </header>
+        <section class="main">
+          <section class="add">
+            <input
+              class="add__input"
+              name="add"
+              type="text"
+              placeholder="Добавить задачу..."
+            />
+          </section>
 
-        <section class="list">
-          <h2 class="list__title list__tasks">Задачи (0/2)</h2>
-          <ul class="list__items">
-            <li class="list__item">
-              <label class="list__checkbox" data-action="change">
-                <input type="checkbox" />
-                <span class="list__checkmark"></span>
-              </label>
-              <div class="list__text" tabindex="0">Сходить на тренировку</div>
-              <button class="list__button" data-action="delete">
-                <span class="list__delete"></span>
-              </button>
-            </li>
-            <li class="list__item">
-              <label class="list__checkbox" data-action="change">
-                <input type="checkbox" />
-                <span class="list__checkmark"></span>
-              </label>
-              <div class="list__text" tabindex="0">Приготовить обед</div>
-              <button class="list__button" data-action="delete">
-                <span class="list__delete"></span>
-              </button>
-            </li>
-          </ul>
+          <section class="list">
+            <h2 class="list__title list__tasks">Задачи (0/2)</h2>
+            <ul class="list__items">
+              <li class="list__item">
+                <label class="list__checkbox" data-action="change">
+                  <input type="checkbox" />
+                  <span class="list__checkmark"></span>
+                </label>
+                <div class="list__text" tabindex="0">Сходить на тренировку</div>
+                <button class="list__button" data-action="delete">
+                  <span class="list__delete"></span>
+                </button>
+              </li>
+              <li class="list__item">
+                <label class="list__checkbox" data-action="change">
+                  <input type="checkbox" />
+                  <span class="list__checkmark"></span>
+                </label>
+                <div class="list__text" tabindex="0">Приготовить обед</div>
+                <button class="list__button" data-action="delete">
+                  <span class="list__delete"></span>
+                </button>
+              </li>
+            </ul>
+          </section>
         </section>
       </section>
-    </section>
+    </main>
   </body>
 </html>
