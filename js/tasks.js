@@ -37,6 +37,7 @@ function addTask(text) {
 // Удаление задачи
 function deleteTask(id) {
   tasks = tasks.filter((task) => task.id !== id);
+
   saveTasks();
   renderTasks();
 }
@@ -70,6 +71,19 @@ function addTaskActionListeners() {
   });
 }
 
+function addTaskMoveListeners() {
+  const upButtons = document.querySelectorAll(".list__action--up");
+  const downButtons = document.querySelectorAll(".list__action--down");
+
+  upButtons.forEach((btn) => {
+    btn.addEventListener("click", () => moveTask(btn.dataset.id, "up"));
+  });
+
+  downButtons.forEach((btn) => {
+    btn.addEventListener("click", () => moveTask(btn.dataset.id, "down"));
+  });
+}
+
 // Отрисовка задач для текущей категории
 function renderTasks() {
   taskList.innerHTML = "";
@@ -81,6 +95,7 @@ function renderTasks() {
   filtered.forEach((task) => {
     const li = document.createElement("li");
     li.className = "list__item";
+    li.dataset.id = task.id;
 
     li.innerHTML = `
   <div class="list__item-inner">
@@ -111,9 +126,69 @@ function renderTasks() {
     taskList.appendChild(li);
   });
 
+  restoreActiveItem("task");
+
   assignTaskEvents();
   addSwipeListeners();
   addTaskActionListeners();
+  addTaskMoveListeners();
+}
+
+function moveTask(id, direction) {
+  const filtered = tasks.filter(
+    (task) => task.categoryId === currentCategoryId
+  );
+  const index = filtered.findIndex((task) => task.id === id);
+  if (index === -1) return;
+
+  const globalIndex = tasks.findIndex((t) => t.id === id);
+  const swapWith = direction === "up" ? index - 1 : index + 1;
+  if (swapWith < 0 || swapWith >= filtered.length) return;
+
+  const swapId = filtered[swapWith].id;
+  const swapGlobalIndex = tasks.findIndex((t) => t.id === swapId);
+
+  const allItems = Array.from(document.querySelectorAll(".tasks .list__item"));
+  const positionsBefore = new Map();
+  allItems.forEach((el) => {
+    positionsBefore.set(el.dataset.id, el.getBoundingClientRect());
+  });
+
+  [tasks[globalIndex], tasks[swapGlobalIndex]] = [
+    tasks[swapGlobalIndex],
+    tasks[globalIndex],
+  ];
+  saveTasks();
+
+  // ⬇️ Сохраняем активный элемент
+  saveActiveItem("task");
+
+  renderTasks();
+
+  // ⬇️ Восстанавливаем активный элемент
+  restoreActiveItem();
+
+  const newItems = Array.from(document.querySelectorAll(".tasks .list__item"));
+  newItems.forEach((el) => {
+    const id = el.dataset.id;
+    const before = positionsBefore.get(id);
+    if (!before) return;
+
+    const after = el.getBoundingClientRect();
+    const deltaY = before.top - after.top;
+
+    el.style.transform = `translateY(${deltaY}px)`;
+    el.style.transition = "none";
+
+    requestAnimationFrame(() => {
+      el.style.transform = "translateY(0)";
+      el.style.transition = "transform 300ms ease";
+    });
+
+    setTimeout(() => {
+      el.style.transform = "";
+    }, 300);
+  });
 }
 
 // Обработчики для чекбоксов и удаления

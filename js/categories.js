@@ -34,6 +34,7 @@ function addCategory(name) {
     icon: "list.png", // Пока одна иконка, позже можно выбрать
   };
 
+  saveActiveItem("category");
   categories.push(newCategory);
   saveCategories();
   renderCategories();
@@ -41,9 +42,59 @@ function addCategory(name) {
 
 // Удаление категории
 function deleteCategory(id) {
+  saveActiveItem("category");
   categories = categories.filter((category) => category.id !== id);
   saveCategories();
   renderCategories();
+}
+
+function moveCategory(id, direction) {
+  saveActiveItem("category"); // ⬅️ Сохраняем активный элемент ДО render
+
+  const index = categories.findIndex((c) => c.id === id);
+  const swapWith = direction === "up" ? index - 1 : index + 1;
+  if (index === -1 || swapWith < 0 || swapWith >= categories.length) return;
+
+  const allItems = Array.from(
+    document.querySelectorAll(".categories .list__item")
+  );
+  const positionsBefore = new Map();
+  allItems.forEach((el) => {
+    positionsBefore.set(el.dataset.id, el.getBoundingClientRect());
+  });
+
+  [categories[index], categories[swapWith]] = [
+    categories[swapWith],
+    categories[index],
+  ];
+
+  saveCategories();
+  renderCategories(); // ⬅️ Перерисовываем DOM
+  restoreActiveItem("category"); // ⬅️ Восстанавливаем активный элемент
+
+  const newItems = Array.from(
+    document.querySelectorAll(".categories .list__item")
+  );
+  newItems.forEach((el) => {
+    const id = el.dataset.id;
+    const before = positionsBefore.get(id);
+    if (!before) return;
+
+    const after = el.getBoundingClientRect();
+    const deltaY = before.top - after.top;
+
+    el.style.transform = `translateY(${deltaY}px)`;
+    el.style.transition = "none";
+
+    requestAnimationFrame(() => {
+      el.style.transform = `translateY(0)`;
+      el.style.transition = "transform 300ms ease";
+    });
+
+    setTimeout(() => {
+      el.style.transform = "";
+    }, 300);
+  });
 }
 
 function addCategoryActionListeners() {
@@ -70,6 +121,10 @@ function renderCategories() {
   categories.forEach((category) => {
     const li = document.createElement("li");
     li.className = "list__item";
+
+    if (category.id === window._activeCategoryId) {
+      li.classList.add("list__item--active");
+    }
     li.dataset.id = category.id;
 
     li.innerHTML = `
@@ -118,7 +173,25 @@ function assignCategoryEvents() {
   document.querySelectorAll(".list__text").forEach((text) => {
     text.addEventListener("click", () => {
       const id = text.dataset.id;
-      openTasksForCategory(id); // Функция из app.js — пока будет заглушка
+      openTasksForCategory(id);
+    });
+  });
+
+  // 🔼 Вверх
+  document.querySelectorAll(".list__action--up").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      moveCategory(id, "up");
+    });
+  });
+
+  // 🔽 Вниз
+  document.querySelectorAll(".list__action--down").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      moveCategory(id, "down");
     });
   });
 }
