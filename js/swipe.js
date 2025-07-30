@@ -11,8 +11,6 @@ function addSwipeListeners() {
     });
 
     item.classList.add("list__item--active");
-    const inner = item.querySelector(".list__item-inner");
-    if (inner) inner.style.transform = "translateX(-80px)";
   }
 
   items.forEach((item) => {
