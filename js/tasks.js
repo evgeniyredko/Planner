@@ -113,13 +113,13 @@ function renderTasks() {
   <div class="list__actions">
     <button class="list__action list__action--edit" data-id="${
       task.id
-    }" data-type="task">✏️</button>
+    }" data-type="task"><img src="./assets/icons/rename.svg" alt="Переименовать"></button>
     <button class="list__action list__action--up" data-id="${
       task.id
-    }">🔼</button>
+    }"><img src="./assets/icons/arrow.svg" alt="Вверх"></button>
     <button class="list__action list__action--down" data-id="${
       task.id
-    }">🔽</button>
+    }"><img src="./assets/icons/arrow.svg" alt="Вниз"></button>
   </div>
 `;
 

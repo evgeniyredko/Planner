@@ -138,9 +138,9 @@ function renderCategories() {
     </button>
   </div>
   <div class="list__actions">
-    <button class="list__action list__action--edit" data-id="${category.id}">✏️</button>
-    <button class="list__action list__action--up" data-id="${category.id}">🔼</button>
-    <button class="list__action list__action--down" data-id="${category.id}">🔽</button>
+    <button class="list__action list__action--edit" data-id="${category.id}"><img src="./assets/icons/rename.svg" alt="Переименовать"></button>
+    <button class="list__action list__action--up" data-id="${category.id}"><img src="./assets/icons/arrow.svg" alt="Вверх"></button>
+    <button class="list__action list__action--down" data-id="${category.id}"><img src="./assets/icons/arrow.svg" alt="Вниз"></button>
   </div>
 `;
 
@@ -173,7 +173,10 @@ function assignCategoryEvents() {
   document.querySelectorAll(".list__text").forEach((text) => {
     text.addEventListener("click", () => {
       const id = text.dataset.id;
-      openTasksForCategory(id);
+      const category = categories.find((c) => c.id === id);
+      if (category) {
+        openTasksForCategory(id, category.name); // ⬅️ передаём category.name
+      }
     });
   });
 

@@ -21,8 +21,15 @@ document
   .querySelector(".tasks .header__left")
   .addEventListener("click", closeTasks);
 
-function openTasksForCategory(categoryId) {
+function openTasksForCategory(categoryId, categoryName) {
   currentCategoryId = categoryId;
+
+  // Меняем заголовок
+  const headerTitle = document.querySelector(".tasks .header__title");
+  if (headerTitle) {
+    headerTitle.textContent = categoryName;
+  }
+
   loadTasks();
   renderTasks();
   openTasks();

@@ -152,14 +152,13 @@ main {
   bottom: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding-right: 12px;
+  padding-right: 5px;
   background-color: var(--color-dark-1);
   z-index: 0;
 }
 
 .list__item--active .list__item-inner {
-  transform: translateX(-120px); /* Ширина свайпа */
+  transform: translateX(-135px); /* Ширина свайпа */
 }
 
 .list__item:has(.list__text:focus) {
@@ -282,6 +281,21 @@ main {
   opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
+}
+
+.list__action {
+  /* outline: 1px solid var(--color-red-1); */
+  padding: 8px;
+}
+
+.list__action img {
+  inline-size: 24px;
+  block-size: 24px;
+  display: block;
+}
+
+.list__action--down {
+  transform: rotate(180deg);
 }
 
 /* Modal */
