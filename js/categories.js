@@ -6,7 +6,15 @@ let categories = [];
 const categoryInput = document.querySelector(".categories .add__input");
 const categoryList = document.querySelector(".categories .list__items");
 
-// Загрузка из localStorage
+// Количество категорий
+function countCategories() {
+  const title = document.querySelector(".categories .list__title");
+  if (title) {
+    title.textContent = `Категории (${categories.length})`;
+  }
+}
+
+// Загрузка категорий из localStorage
 function loadCategories() {
   const data = localStorage.getItem(CATEGORY_STORAGE_KEY);
   categories = data ? JSON.parse(data) : [];
@@ -151,6 +159,7 @@ function renderCategories() {
   assignCategoryEvents();
   addSwipeListeners();
   addCategoryActionListeners();
+  countCategories();
 }
 
 // Слушатель на ввод

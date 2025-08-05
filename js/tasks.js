@@ -7,7 +7,18 @@ let currentCategoryId = null;
 const taskInput = document.querySelector(".tasks .add__input");
 const taskList = document.querySelector(".tasks .list__items");
 
-// Загрузка задач
+// Количество категорий
+function countTasks() {
+  const title = document.querySelector(".tasks .list__title");
+  if (!title) return;
+
+  const filteredTasks = tasks.filter((t) => t.categoryId === currentCategoryId);
+  const doneCount = filteredTasks.filter((t) => t.done).length;
+
+  title.textContent = `Задачи (${doneCount}/${filteredTasks.length})`;
+}
+
+// Загрузка задач из localStorage
 function loadTasks() {
   const data = localStorage.getItem(TASK_STORAGE_KEY);
   tasks = data ? JSON.parse(data) : [];
@@ -36,8 +47,8 @@ function addTask(text) {
 
 // Удаление задачи
 function deleteTask(id) {
+  saveActiveItem("task");
   tasks = tasks.filter((task) => task.id !== id);
-
   saveTasks();
   renderTasks();
 }
@@ -49,6 +60,7 @@ function toggleTask(id) {
     task.done = !task.done;
     saveTasks();
     renderTasks();
+    countTasks();
   }
 }
 
@@ -132,6 +144,7 @@ function renderTasks() {
   addSwipeListeners();
   addTaskActionListeners();
   addTaskMoveListeners();
+  countTasks();
 }
 
 function moveTask(id, direction) {
