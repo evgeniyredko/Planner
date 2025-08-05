@@ -12,6 +12,8 @@ main {
   overflow-x: hidden;
   width: 100%;
   height: 100dvh;
+  max-inline-size: 768px;
+  margin-inline: auto;
 }
 
 .main {
