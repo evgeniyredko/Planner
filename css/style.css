@@ -63,8 +63,8 @@ main {
   display: flex;
 }
 
-.header__left:active svg path {
-  fill: var(--color-red-1);
+.header__left:active {
+  color: var(--color-red-1);
 }
 
 .header__title {
@@ -84,8 +84,8 @@ main {
   margin-block-start: 7px;
 }
 
-.header__button-menu:focus svg path {
-  fill: var(--color-red-1);
+.header__button-menu:focus {
+  color: var(--color-red-1);
 }
 
 .header__right {
