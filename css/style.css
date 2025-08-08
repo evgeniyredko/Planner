@@ -57,7 +57,14 @@ main {
 
 .header__left {
   padding: 21px 20px 19px 20px;
-  max-block-size: 64px;
+  block-size: 64px;
+  inline-size: 64px;
+  justify-content: center;
+  display: flex;
+}
+
+.header__left:active svg path {
+  fill: var(--color-red-1);
 }
 
 .header__title {
@@ -71,6 +78,14 @@ main {
   background-color: transparent;
   border: none;
   inline-size: 64px;
+}
+
+.header__button-menu svg {
+  margin-block-start: 7px;
+}
+
+.header__button-menu:focus svg path {
+  fill: var(--color-red-1);
 }
 
 .header__right {
