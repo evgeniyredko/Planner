@@ -98,3 +98,9 @@ document.querySelectorAll(".header__button-menu").forEach((btn) => {
     e.currentTarget.focus(); // насильно возвращаем фокус
   });
 });
+
+document.querySelectorAll(".header__left").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.currentTarget.active(); // насильно возвращаем фокус
+  });
+});
