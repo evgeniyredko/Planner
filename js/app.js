@@ -94,7 +94,7 @@ confirmDelete.addEventListener("click", () => {
 });
 
 document.querySelectorAll(".header__button-menu").forEach((btn) => {
-  btn.addEventListener("touchend", (e) => {
+  btn.addEventListener("click", (e) => {
     e.currentTarget.focus(); // насильно возвращаем фокус
   });
 });
