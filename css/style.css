@@ -84,10 +84,6 @@ main {
   margin-block-start: 7px;
 }
 
-.header__button-menu svg path {
-  fill: var(--color-red-1);
-}
-
 .header__button-menu:focus svg path {
   fill: var(--color-red-1);
 }
