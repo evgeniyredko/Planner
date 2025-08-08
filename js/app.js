@@ -63,15 +63,13 @@ function closeConfirm() {
 // Открытие/закрытие меню
 menuButton.addEventListener("click", (e) => {
   e.stopPropagation();
-  const isOpen = contextMenu.style.display === "block";
-  contextMenu.style.display = isOpen ? "none" : "block";
-  overlay.style.display = isOpen ? "none" : "block";
+  contextMenu.style.display =
+    contextMenu.style.display === "block" ? "none" : "block";
 });
 
 // Закрыть меню при клике вне
-overlay.addEventListener("click", () => {
+document.addEventListener("click", () => {
   contextMenu.style.display = "none";
-  overlay.style.display = "none";
 });
 
 // Клик "Удалить все задачи"
