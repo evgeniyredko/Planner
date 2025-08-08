@@ -128,7 +128,7 @@ main {
 }
 
 .context-menu__item {
-  padding: 14px 24px;
+  padding: 15px 25px;
   cursor: pointer;
   transition: background 0.2s;
   background-color: var(--color-dark-2);
