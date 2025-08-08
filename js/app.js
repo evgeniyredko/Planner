@@ -34,3 +34,63 @@ function openTasksForCategory(categoryId, categoryName) {
   renderTasks();
   openTasks();
 }
+
+const menuButton = document.querySelector(".tasks .header__button-menu");
+const contextMenu = document.getElementById("contextMenu");
+const overlay = document.getElementById("overlay");
+const deleteAllTasksBtn = document.getElementById("deleteAllTasks");
+
+const confirmModal = document.getElementById("confirmModal");
+const confirmText = document.getElementById("confirmText");
+const cancelDelete = document.getElementById("cancelDelete");
+const confirmDelete = document.getElementById("confirmDelete");
+
+let confirmAction = null; // функция, выполняемая при подтверждении
+
+// Универсальная функция показа модалки
+function showConfirm(text, action) {
+  confirmText.textContent = text;
+  confirmAction = action;
+  confirmModal.style.display = "flex";
+}
+
+// Закрыть модалку
+function closeConfirm() {
+  confirmModal.style.display = "none";
+  confirmAction = null;
+}
+
+// Открытие/закрытие меню
+menuButton.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const isOpen = contextMenu.style.display === "block";
+  contextMenu.style.display = isOpen ? "none" : "block";
+  overlay.style.display = isOpen ? "none" : "block";
+});
+
+// Закрыть меню при клике вне
+overlay.addEventListener("click", () => {
+  contextMenu.style.display = "none";
+  overlay.style.display = "none";
+});
+
+// Клик "Удалить все задачи"
+deleteAllTasksBtn.addEventListener("click", () => {
+  showConfirm("Удалить все задачи?", () => {
+    tasks = tasks.filter((t) => t.categoryId !== currentCategoryId);
+    saveTasks();
+    renderTasks();
+  });
+  contextMenu.style.display = "none";
+});
+
+// Кнопка отмены в модалке
+cancelDelete.addEventListener("click", closeConfirm);
+
+// Подтверждение
+confirmDelete.addEventListener("click", () => {
+  if (typeof confirmAction === "function") {
+    confirmAction();
+  }
+  closeConfirm();
+});

@@ -50,10 +50,14 @@ function addCategory(name) {
 
 // Удаление категории
 function deleteCategory(id) {
-  saveActiveItem("category");
-  categories = categories.filter((category) => category.id !== id);
-  saveCategories();
-  renderCategories();
+  showConfirm("Удалить эту категорию?", () => {
+    saveActiveItem("category");
+    categories = categories.filter((category) => category.id !== id);
+    saveCategories();
+    tasks = tasks.filter((task) => task.categoryId !== id);
+    saveTasks();
+    renderCategories();
+  });
 }
 
 function moveCategory(id, direction) {
@@ -111,10 +115,8 @@ function addCategoryActionListeners() {
   editButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation(); // чтобы не было перехода к задачам
-
       const id = btn.dataset.id;
       const category = categories.find((c) => c.id === id);
-
       if (category) {
         openRenameModal(id, category.name, "category");
       }

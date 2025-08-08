@@ -63,6 +63,13 @@
               alt="Меню"
             />
           </button>
+          <div class="context-menu" id="contextMenu">
+            <ul class="context-menu__list">
+              <li class="context-menu__item" id="deleteAllTasks">
+                Удалить все задачи
+              </li>
+            </ul>
+          </div>
         </header>
         <section class="main">
           <section class="add">
@@ -118,5 +125,21 @@
         </div>
       </div>
     </div>
+    <div class="modal" id="confirmModal">
+      <div class="modal__content">
+        <p class="modal__title" id="confirmText">Точно удалить?</p>
+        <div class="modal__buttons">
+          <button class="modal__btn modal__btn--cancel" id="cancelDelete">
+            <img src="./assets/icons/delete.png" alt="Отмена" />
+            <span>Отмена</span>
+          </button>
+          <button class="modal__btn modal__btn--confirm" id="confirmDelete">
+            <img src="./assets/icons/check.png" alt="Сохранить" />
+            <span>Удалить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
   </body>
 </html>

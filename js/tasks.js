@@ -47,10 +47,12 @@ function addTask(text) {
 
 // Удаление задачи
 function deleteTask(id) {
-  saveActiveItem("task");
-  tasks = tasks.filter((task) => task.id !== id);
-  saveTasks();
-  renderTasks();
+  showConfirm("Удалить эту задачу?", () => {
+    saveActiveItem("task");
+    tasks = tasks.filter((task) => task.id !== id);
+    saveTasks();
+    renderTasks();
+  });
 }
 
 // Переключение состояния выполнения
