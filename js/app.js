@@ -92,3 +92,9 @@ confirmDelete.addEventListener("click", () => {
   }
   closeConfirm();
 });
+
+document.querySelectorAll(".header__button-menu").forEach((btn) => {
+  btn.addEventListener("touchend", (e) => {
+    e.currentTarget.focus(); // насильно возвращаем фокус
+  });
+});
