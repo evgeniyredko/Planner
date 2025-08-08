@@ -85,7 +85,7 @@ main {
 }
 
 .header__button-menu:focus svg path {
-  fill: var(--color-red-1);
+  fill: var(--color-light-1);
 }
 
 .header__right {
