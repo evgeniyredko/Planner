@@ -58,7 +58,7 @@ main {
 .header__left {
   padding: 21px 20px 19px 20px;
   block-size: 64px;
-  inline-size: 64px;
+  min-inline-size: 64px;
   justify-content: center;
   display: flex;
 }
@@ -72,12 +72,14 @@ main {
   font-size: 18px;
   font-weight: var(--font-weight-medium);
   padding-block: 23px 17px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .header__button-menu {
   background-color: transparent;
   border: none;
-  inline-size: 64px;
+  min-inline-size: 64px;
 }
 
 .header__button-menu svg {
@@ -216,6 +218,8 @@ main {
   padding-block: 16px 14px;
   inline-size: 100%;
   text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .list__delete {
