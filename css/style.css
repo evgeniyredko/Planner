@@ -411,6 +411,10 @@ main {
   justify-content: center;
 }
 
+.modal__btn:active {
+  outline: 1px solid var(--color-red-1);
+}
+
 .modal__btn--cancel {
   color: var(--color-light-1);
 }
