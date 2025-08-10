@@ -45,6 +45,10 @@ main {
   z-index: 2;
 }
 
+.header .logo {
+  padding: 22px 20px 18px 20px;
+}
+
 /* Header */
 .header {
   background-color: var(--color-dark-2);
