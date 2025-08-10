@@ -98,3 +98,8 @@ document.querySelectorAll(".header__button-menu").forEach((btn) => {
     e.currentTarget.focus(); // насильно возвращаем фокус
   });
 });
+
+document.querySelectorAll(".modal button").forEach((btn) => {
+  btn.addEventListener("touchstart", () => btn.classList.add("is-active"));
+  btn.addEventListener("touchend", () => btn.classList.remove("is-active"));
+});

@@ -409,9 +409,14 @@ main {
   align-items: center;
   width: 100%;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 .modal__btn:active {
+  outline: 1px solid var(--color-red-1);
+}
+
+.modal__btn.is-active {
   outline: 1px solid var(--color-red-1);
 }
 
