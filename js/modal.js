@@ -53,3 +53,34 @@ cancelBtn.addEventListener("click", closeRenameModal);
 modal.addEventListener("click", (e) => {
   if (e.target === modal) closeRenameModal();
 });
+
+//Изменение иконки
+let currentCategoryIdForIcon = null;
+const iconModal = document.getElementById("iconModal");
+const cancelIconSelect = document.getElementById("cancelIconSelect");
+
+// Открыть модалку при клике на кнопку изменения иконки
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".list__button")?.dataset.action === "change") {
+    currentCategoryIdForIcon = e.target.closest(".list__button").dataset.id;
+    iconModal.style.display = "flex";
+  }
+});
+
+// Выбор иконки
+document.querySelectorAll(".modal__item img").forEach((img) => {
+  img.addEventListener("click", () => {
+    const newIcon = img.dataset.icon;
+    categories = categories.map((cat) =>
+      cat.id == currentCategoryIdForIcon ? { ...cat, icon: newIcon } : cat
+    );
+    saveCategories();
+    renderCategories();
+    iconModal.style.display = "none";
+  });
+});
+
+// Закрыть модалку
+cancelIconSelect.addEventListener("click", () => {
+  iconModal.style.display = "none";
+});

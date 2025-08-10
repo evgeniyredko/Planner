@@ -153,7 +153,7 @@
     </div>
     <div class="modal" id="confirmModal">
       <div class="modal__content">
-        <p class="modal__title" id="confirmText">Точно удалить?</p>
+        <h2 class="modal__title" id="confirmText">Точно удалить?</h2>
         <div class="modal__buttons">
           <button class="modal__btn modal__btn--cancel" id="cancelDelete">
             <img src="./assets/icons/delete.png" alt="Отмена" />
@@ -164,6 +164,101 @@
             <span>Удалить</span>
           </button>
         </div>
+      </div>
+    </div>
+    <div class="modal" id="iconModal">
+      <div class="modal__content">
+        <h2 class="modal__title">Выберите иконку</h2>
+        <ul class="modal__list">
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/list.svg"
+              data-icon="list.svg"
+              alt="Список"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/basket.svg"
+              data-icon="basket.svg"
+              alt="Корзина"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/idea.svg"
+              data-icon="idea.svg"
+              alt="Идея"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/location.svg"
+              data-icon="location.svg"
+              alt="Локация"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/push-pin.svg"
+              data-icon="push-pin.svg"
+              alt="Закрепка"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/photo.svg"
+              data-icon="photo.svg"
+              alt="Камера"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/music.svg"
+              data-icon="music.svg"
+              alt="Музыка"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/internet.svg"
+              data-icon="music.svg"
+              alt="Интернет"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/book.svg"
+              data-icon="book.svg"
+              alt="Книга"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/work.svg"
+              data-icon="work.svg"
+              alt="Работа"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/trash.svg"
+              data-icon="trash.svg"
+              alt="Мусор"
+            />
+          </li>
+          <li class="modal__item">
+            <img
+              src="./assets/icons/categories/settings.svg"
+              data-icon="settings.svg"
+              alt="Настройки"
+            />
+          </li>
+        </ul>
+        <button class="modal__btn modal__btn--cancel" id="cancelIconSelect">
+          <img src="./assets/icons/delete.png" alt="Отмена" />
+          <span>Отмена</span>
+        </button>
       </div>
     </div>
     <div class="overlay" id="overlay"></div>

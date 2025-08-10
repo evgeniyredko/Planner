@@ -431,3 +431,17 @@ main {
 .modal__btn--save {
   color: var(--color-light-1);
 }
+
+.modal__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.modal__item {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}

@@ -139,7 +139,7 @@ function renderCategories() {
 
     li.innerHTML = `
   <div class="list__item-inner">
-    <button class="list__button" data-action="change" data-id="${category.id}">
+    <button class="list__button category-icon" data-action="change" data-id="${category.id}">
       <img class="list__img" src="./assets/icons/categories/${category.icon}" alt="" />
     </button>
     <div class="list__text" tabindex="0" data-id="${category.id}">${category.name}</div>
