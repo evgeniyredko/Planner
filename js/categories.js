@@ -39,7 +39,7 @@ function addCategory(name) {
   const newCategory = {
     id: generateId(),
     name,
-    icon: "list.png", // Пока одна иконка, позже можно выбрать
+    icon: "list.svg", // Иконка по умолчанию
   };
 
   saveActiveItem("category");
