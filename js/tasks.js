@@ -42,7 +42,7 @@ function addTask(text) {
 
   tasks.push(newTask);
   saveTasks();
-  renderTasks();
+  renderTasks(false);
 }
 
 // Удаление задачи
@@ -99,7 +99,7 @@ function addTaskMoveListeners() {
 }
 
 // Отрисовка задач для текущей категории
-function renderTasks() {
+function renderTasks(restoreActive = true) {
   taskList.innerHTML = "";
 
   const filtered = tasks.filter(
@@ -140,7 +140,9 @@ function renderTasks() {
     taskList.appendChild(li);
   });
 
-  restoreActiveItem("task");
+  if (restoreActive) {
+    restoreActiveItem("task");
+  }
 
   assignTaskEvents();
   addSwipeListeners();
@@ -149,6 +151,17 @@ function renderTasks() {
   countTasks();
 }
 
+// Переключение состояния выполнения
+function toggleTask(id) {
+  const task = tasks.find((task) => task.id === id);
+  if (task) {
+    task.done = !task.done;
+    saveTasks();
+    renderTasks(false); // <-- не восстанавливаем активный элемент
+  }
+}
+
+// Перемещение задачи
 function moveTask(id, direction) {
   const filtered = tasks.filter(
     (task) => task.categoryId === currentCategoryId
@@ -175,13 +188,8 @@ function moveTask(id, direction) {
   ];
   saveTasks();
 
-  // ⬇️ Сохраняем активный элемент
   saveActiveItem("task");
-
-  renderTasks();
-
-  // ⬇️ Восстанавливаем активный элемент
-  restoreActiveItem();
+  renderTasks(true); // <-- при перемещении восстанавливаем активный элемент
 
   const newItems = Array.from(document.querySelectorAll(".tasks .list__item"));
   newItems.forEach((el) => {
