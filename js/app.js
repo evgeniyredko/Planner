@@ -119,3 +119,17 @@ document.querySelectorAll(".modal button").forEach((btn) => {
   btn.addEventListener("touchstart", () => btn.classList.add("is-active"));
   btn.addEventListener("touchend", () => btn.classList.remove("is-active"));
 });
+
+// Переключатель темы
+const themeToggle = document.getElementById("themeToggle");
+
+// При загрузке — ставим сохранённую тему
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("theme-light");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("theme-light");
+  const isDark = document.body.classList.contains("theme-light");
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+});

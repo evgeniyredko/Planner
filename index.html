@@ -40,7 +40,9 @@
           </button>
           <div class="context-menu" id="contextMenuCategories">
             <ul class="context-menu__list">
-              <li class="context-menu__item">Пункт 1</li>
+              <li class="context-menu__item" id="themeToggle">
+                Переключить тему
+              </li>
             </ul>
           </div>
         </header>
@@ -125,7 +127,7 @@
         <input type="text" id="rename-input" class="modal__input" />
         <div class="modal__buttons">
           <button id="rename-cancel" class="modal__btn modal__btn--cancel">
-            <img src="./assets/icons/delete.png" alt="Отмена" />
+            <span class="list__delete"></span>
             <span>Отмена</span>
           </button>
           <button id="rename-save" class="modal__btn modal__btn--save">
@@ -140,7 +142,7 @@
         <h2 class="modal__title" id="confirmText">Точно удалить?</h2>
         <div class="modal__buttons">
           <button class="modal__btn modal__btn--cancel" id="cancelDelete">
-            <img src="./assets/icons/delete.png" alt="Отмена" />
+            <span class="list__delete"></span>
             <span>Отмена</span>
           </button>
           <button class="modal__btn modal__btn--confirm" id="confirmDelete">
@@ -240,7 +242,7 @@
           </li>
         </ul>
         <button class="modal__btn modal__btn--cancel" id="cancelIconSelect">
-          <img src="./assets/icons/delete.png" alt="Отмена" />
+          <span class="list__delete"></span>
           <span>Отмена</span>
         </button>
       </div>

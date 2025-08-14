@@ -17,6 +17,22 @@
   --color-red-2: #c23b3b;
 }
 
+body.theme-light {
+  --color-light-1: #000;
+  /* --color-light-2: #1a191f; */
+
+  --color-dark-1: #ebebeb;
+  --color-dark-2: #fff;
+
+  --color-red-1: #ff4041;
+  --color-red-2: #c23b3b;
+}
+
+body.theme-light .list__img,
+body.theme-light .modal__item img {
+  filter: invert(35%);
+}
+
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter-Regular.woff2") format("woff2");
