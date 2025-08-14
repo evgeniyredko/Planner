@@ -45,10 +45,6 @@ main {
   z-index: 2;
 }
 
-.header .logo {
-  padding: 22px 20px 18px 20px;
-}
-
 /* Header */
 .header {
   background-color: var(--color-dark-2);
@@ -57,14 +53,17 @@ main {
   justify-content: space-between;
   margin: 10px 10px 0 10px;
   border-radius: 10px;
+  position: relative;
 }
 
 .header__left {
-  padding: 24px 20px 18px 20px;
-  block-size: 64px;
+  background-color: transparent;
+  border: none;
   min-inline-size: 64px;
-  justify-content: center;
-  display: flex;
+}
+
+.header__left svg {
+  margin-block-start: 7px;
 }
 
 .header__left:active {
@@ -75,7 +74,7 @@ main {
   color: var(--color-light-1);
   font-size: 18px;
   font-weight: var(--font-weight-medium);
-  padding-block: 23px 17px;
+  padding-block: 22px 18px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -134,12 +133,14 @@ main {
 
 .context-menu {
   position: absolute;
-  top: 75px;
-  right: 10px;
+  top: 100%;
+  transform: translatX(-100%);
+  right: 0;
   border-radius: 6px;
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.3);
   display: none;
   z-index: 1000;
+  margin-block-start: 5px;
 }
 
 .context-menu__list {
@@ -155,7 +156,6 @@ main {
   background-color: var(--color-dark-2);
   border-radius: 6px;
   color: var(--color-light-1);
-  /* box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.3); */
 }
 
 /* List */
@@ -296,6 +296,28 @@ main {
   position: absolute;
   left: 6px;
   top: 3px;
+  inline-size: 6px;
+  block-size: 11px;
+  border: solid var(--color-dark-2);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.check {
+  block-size: 22px;
+  inline-size: 22px;
+  background-color: #4caf50;
+  border-radius: 100%;
+  position: relative;
+  display: inline-block;
+  margin-block-start: 6px;
+}
+
+.check::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
   inline-size: 6px;
   block-size: 11px;
   border: solid var(--color-dark-2);

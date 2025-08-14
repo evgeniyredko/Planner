@@ -18,11 +18,9 @@
     <main>
       <section class="categories">
         <header class="header">
-          <img
-            class="header__left logo"
-            src="./assets/icons/check.png"
-            alt="Логотип"
-          />
+          <button class="header__left">
+            <div class="logo"><span class="check"></span></div>
+          </button>
           <h1 class="header__title">Планировщик</h1>
           <button class="header__button-menu">
             <svg
@@ -64,7 +62,7 @@
       </section>
       <section class="tasks">
         <header class="header">
-          <div class="header__left">
+          <button class="header__left">
             <svg
               width="12"
               height="20"
@@ -79,7 +77,7 @@
                 fill="currentColor"
               />
             </svg>
-          </div>
+          </button>
 
           <h1 class="header__title">Задачи на сегодня</h1>
           <button class="header__button-menu">
@@ -146,7 +144,7 @@
             <span>Отмена</span>
           </button>
           <button class="modal__btn modal__btn--confirm" id="confirmDelete">
-            <img src="./assets/icons/check.png" alt="Сохранить" />
+            <span class="check"></span>
             <span>Удалить</span>
           </button>
         </div>
