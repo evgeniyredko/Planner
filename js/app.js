@@ -35,8 +35,14 @@ function openTasksForCategory(categoryId, categoryName) {
   openTasks();
 }
 
-const menuButton = document.querySelector(".tasks .header__button-menu");
-const contextMenu = document.getElementById("contextMenu");
+const menuButtonTasks = document.querySelector(".tasks .header__button-menu");
+const contextMenuTasks = document.getElementById("contextMenuTasks");
+
+const menuButtonCategories = document.querySelector(
+  ".categories .header__button-menu"
+);
+const contextMenuCategories = document.getElementById("contextMenuCategories");
+
 const overlay = document.getElementById("overlay");
 const deleteAllTasksBtn = document.getElementById("deleteAllTasks");
 
@@ -61,15 +67,25 @@ function closeConfirm() {
 }
 
 // Открытие/закрытие меню
-menuButton.addEventListener("click", (e) => {
+menuButtonTasks.addEventListener("click", (e) => {
   e.stopPropagation();
-  contextMenu.style.display =
-    contextMenu.style.display === "block" ? "none" : "block";
+  contextMenuTasks.style.display =
+    contextMenuTasks.style.display === "block" ? "none" : "block";
+});
+
+menuButtonCategories.addEventListener("click", (e) => {
+  e.stopPropagation();
+  contextMenuCategories.style.display =
+    contextMenuCategories.style.display === "block" ? "none" : "block";
 });
 
 // Закрыть меню при клике вне
 document.addEventListener("click", () => {
-  contextMenu.style.display = "none";
+  contextMenuTasks.style.display = "none";
+});
+
+document.addEventListener("click", () => {
+  contextMenuCategories.style.display = "none";
 });
 
 // Клик "Удалить все задачи"
@@ -79,7 +95,7 @@ deleteAllTasksBtn.addEventListener("click", () => {
     saveTasks();
     renderTasks();
   });
-  contextMenu.style.display = "none";
+  contextMenuTasks.style.display = "none";
 });
 
 // Кнопка отмены в модалке

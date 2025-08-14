@@ -38,6 +38,11 @@
               />
             </svg>
           </button>
+          <div class="context-menu" id="contextMenuCategories">
+            <ul class="context-menu__list">
+              <li class="context-menu__item">Пункт 1</li>
+            </ul>
+          </div>
         </header>
         <section class="main">
           <section class="add">
@@ -89,7 +94,7 @@
               />
             </svg>
           </button>
-          <div class="context-menu" id="contextMenu">
+          <div class="context-menu" id="contextMenuTasks">
             <ul class="context-menu__list">
               <li class="context-menu__item" id="deleteAllTasks">
                 Удалить все задачи
@@ -109,28 +114,7 @@
 
           <section class="list">
             <h2 class="list__title list__tasks">Задачи</h2>
-            <ul class="list__items">
-              <li class="list__item">
-                <label class="list__checkbox" data-action="change">
-                  <input type="checkbox" />
-                  <span class="list__checkmark"></span>
-                </label>
-                <div class="list__text" tabindex="0">Сходить на тренировку</div>
-                <button class="list__button" data-action="delete">
-                  <span class="list__delete"></span>
-                </button>
-              </li>
-              <li class="list__item">
-                <label class="list__checkbox" data-action="change">
-                  <input type="checkbox" />
-                  <span class="list__checkmark"></span>
-                </label>
-                <div class="list__text" tabindex="0">Приготовить обед</div>
-                <button class="list__button" data-action="delete">
-                  <span class="list__delete"></span>
-                </button>
-              </li>
-            </ul>
+            <ul class="list__items"></ul>
           </section>
         </section>
       </section>
