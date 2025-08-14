@@ -62,6 +62,10 @@ main {
   min-inline-size: 64px;
 }
 
+.logo {
+  margin-block-start: 6px;
+}
+
 .header__left svg {
   margin-block-start: 7px;
 }
@@ -310,7 +314,6 @@ main {
   border-radius: 100%;
   position: relative;
   display: inline-block;
-  margin-block-start: 6px;
 }
 
 .check::after {
