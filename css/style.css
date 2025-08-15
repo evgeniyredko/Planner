@@ -247,7 +247,7 @@ main {
   left: 10px;
   inline-size: 2px;
   block-size: 12px;
-  background-color: var(--color-dark-2);
+  background-color: #fff;
   transform-origin: center;
 }
 
@@ -302,7 +302,7 @@ main {
   top: 3px;
   inline-size: 6px;
   block-size: 11px;
-  border: solid var(--color-dark-2);
+  border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -323,7 +323,7 @@ main {
   top: 4px;
   inline-size: 6px;
   block-size: 11px;
-  border: solid var(--color-dark-2);
+  border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
