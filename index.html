@@ -265,10 +265,74 @@
             />
           </li>
         </ul>
-        <button class="modal__btn modal__btn--cancel" id="cancelIconSelect">
-          <span class="list__delete"></span>
-          <span>Отмена</span>
-        </button>
+        <h3 class="modal__subtitle">Выберите цвет</h3>
+
+        <!-- <div class="modal__colors">
+          <span
+            class="color"
+            data-color="#ff4041"
+            style="background: #ff4041"
+          ></span>
+          <span
+            class="color"
+            data-color="#4caf50"
+            style="background: #4caf50"
+          ></span>
+          <span
+            class="color"
+            data-color="#2196f3"
+            style="background: #2196f3"
+          ></span>
+          <span
+            class="color"
+            data-color="#ff9800"
+            style="background: #ff9800"
+          ></span>
+          <span
+            class="color"
+            data-color="#9c27b0"
+            style="background: #9c27b0"
+          ></span>
+        </div> -->
+
+        <div class="modal__colors">
+          <div
+            class="color-option"
+            data-color="icon-red"
+            style="background: #ff4041"
+          ></div>
+          <div
+            class="color-option"
+            data-color="icon-green"
+            style="background: #4caf50"
+          ></div>
+          <div
+            class="color-option"
+            data-color="icon-blue"
+            style="background: #2196f3"
+          ></div>
+          <div
+            class="color-option"
+            data-color="icon-yellow"
+            style="background: #ff9800"
+          ></div>
+          <div
+            class="color-option"
+            data-color="icon-white"
+            style="background: white; border: 1px solid #ccc"
+          ></div>
+        </div>
+
+        <div class="modal__buttons">
+          <button class="modal__btn modal__btn--cancel" id="cancelIconSelect">
+            <span class="list__delete"></span>
+            <span>Отмена</span>
+          </button>
+          <button class="modal__btn modal__btn--confirm" id="confirmIconSelect">
+            <span class="check"></span>
+            <span>Сохранить</span>
+          </button>
+        </div>
       </div>
     </div>
     <div class="overlay" id="overlay"></div>

@@ -54,15 +54,39 @@ modal.addEventListener("click", (e) => {
   if (e.target === modal) closeRenameModal();
 });
 
-//Изменение иконки
+// Изменение иконки
 let currentCategoryIdForIcon = null;
+let selectedIcon = null;
+let selectedColor = null;
+
 const iconModal = document.getElementById("iconModal");
 const cancelIconSelect = document.getElementById("cancelIconSelect");
+const confirmIconSelect = document.getElementById("confirmIconSelect");
 
 // Открыть модалку при клике на кнопку изменения иконки
 document.addEventListener("click", (e) => {
-  if (e.target.closest(".list__button")?.dataset.action === "change") {
-    currentCategoryIdForIcon = e.target.closest(".list__button").dataset.id;
+  const btn = e.target.closest(".list__button");
+  if (btn?.dataset.action === "change") {
+    currentCategoryIdForIcon = btn.dataset.id;
+
+    // Подтягиваем ТЕКУЩИЕ значения категории
+    const cat = categories.find((c) => c.id == currentCategoryIdForIcon);
+    selectedIcon = cat?.icon ?? null;
+    selectedColor = typeof cat?.color === "string" ? cat.color : null;
+
+    // Сброс/установка выделения в UI
+    document
+      .querySelectorAll("#iconModal .modal__item img")
+      .forEach((img) =>
+        img.classList.toggle("selected", img.dataset.icon === selectedIcon)
+      );
+
+    document
+      .querySelectorAll("#iconModal .color-option")
+      .forEach((opt) =>
+        opt.classList.toggle("selected", opt.dataset.color === selectedColor)
+      );
+
     iconModal.style.display = "flex";
   }
 });
@@ -70,17 +94,43 @@ document.addEventListener("click", (e) => {
 // Выбор иконки
 document.querySelectorAll(".modal__item img").forEach((img) => {
   img.addEventListener("click", () => {
-    const newIcon = img.dataset.icon;
-    categories = categories.map((cat) =>
-      cat.id == currentCategoryIdForIcon ? { ...cat, icon: newIcon } : cat
-    );
-    saveCategories();
-    renderCategories();
-    iconModal.style.display = "none";
+    selectedIcon = img.dataset.icon;
+    document
+      .querySelectorAll(".modal__item img")
+      .forEach((i) => i.classList.remove("selected"));
+    img.classList.add("selected");
   });
 });
 
-// Закрыть модалку
+// Выбор цвета
+document.querySelectorAll(".color-option").forEach((option) => {
+  option.addEventListener("click", () => {
+    selectedColor = option.dataset.color;
+    document
+      .querySelectorAll(".color-option")
+      .forEach((o) => o.classList.remove("selected"));
+    option.classList.add("selected");
+  });
+});
+
+// Сохранить выбор (без раннего return)
+confirmIconSelect.addEventListener("click", () => {
+  const idx = categories.findIndex((c) => c.id == currentCategoryIdForIcon);
+  if (idx === -1) return;
+
+  const cat = categories[idx];
+
+  const newIcon = selectedIcon ?? cat.icon; // если иконку не трогали — остаётся старая
+  const newColor = selectedColor ?? cat.color; // если цвет не трогали — остаётся старый
+
+  categories[idx] = { ...cat, icon: newIcon, color: newColor };
+
+  saveCategories();
+  renderCategories();
+  iconModal.style.display = "none";
+});
+
+// Отмена
 cancelIconSelect.addEventListener("click", () => {
   iconModal.style.display = "none";
 });

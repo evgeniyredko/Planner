@@ -37,6 +37,14 @@ body.theme-light .context-menu {
   box-shadow: 0px 0px 12px 4px rgba(100, 100, 100, 0.3);
 }
 
+body.theme-light .modal__colors .color-option.selected {
+  border: 2px solid #4b4b4b !important;
+}
+
+body.theme-light .modal__item img.selected {
+  outline: 2px solid #000;
+}
+
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter-Regular.woff2") format("woff2");
