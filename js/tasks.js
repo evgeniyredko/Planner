@@ -7,7 +7,7 @@ let currentCategoryId = null;
 const taskInput = document.querySelector(".tasks .add__input");
 const taskList = document.querySelector(".tasks .list__items");
 
-// Количество категорий
+// Количество задач
 function countTasks() {
   const title = document.querySelector(".tasks .list__title");
   if (!title) return;
@@ -98,13 +98,25 @@ function addTaskMoveListeners() {
   });
 }
 
-// Отрисовка задач для текущей категории
+// Отрисовка задач для текущего списка
 function renderTasks(restoreActive = true) {
   taskList.innerHTML = "";
 
   const filtered = tasks.filter(
     (task) => task.categoryId === currentCategoryId
   );
+
+  if (tasks.length === 0) {
+    renderEmptyMessage(
+      taskList,
+      "Нет задач",
+      "Нажмите на поле ввода выше, чтобы добавить новую задачу",
+      "./assets/icons/empty.svg",
+      "Нет задач"
+    );
+    countTasks();
+    return;
+  }
 
   filtered.forEach((task) => {
     const li = document.createElement("li");

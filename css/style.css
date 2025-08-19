@@ -180,6 +180,7 @@ main {
   flex-direction: column;
   gap: 5px;
   margin-block-start: 6px;
+  background-image: url(./../assets/icons/);
 }
 
 .list__item {
@@ -305,6 +306,35 @@ main {
   border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.list__empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-grey-1);
+}
+
+.list__empty-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.list__empty-img {
+  width: 150px;
+  height: 150px;
+}
+
+.list__empty-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.list__empty-text {
+  margin: 0;
+  font-style: italic;
+  font-size: 16px;
 }
 
 .check {

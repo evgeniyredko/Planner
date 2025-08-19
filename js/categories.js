@@ -10,7 +10,7 @@ const categoryList = document.querySelector(".categories .list__items");
 function countCategories() {
   const title = document.querySelector(".categories .list__title");
   if (title) {
-    title.textContent = `Категории (${categories.length})`;
+    title.textContent = `Списки (${categories.length})`;
   }
 }
 
@@ -124,48 +124,21 @@ function addCategoryActionListeners() {
   });
 }
 
-// Отрисовка всех категорий
-// function renderCategories() {
-//   categoryList.innerHTML = "";
-
-//   categories.forEach((category) => {
-//     const li = document.createElement("li");
-//     li.className = "list__item";
-
-//     if (category.id === window._activeCategoryId) {
-//       li.classList.add("list__item--active");
-//     }
-//     li.dataset.id = category.id;
-
-//     li.innerHTML = `
-//   <div class="list__item-inner">
-//     <button class="list__button category-icon" data-action="change" data-id="${category.id}">
-//       <img class="list__img" src="./assets/icons/categories/${category.icon}" alt="" />
-//     </button>
-//     <div class="list__text" tabindex="0" data-id="${category.id}">${category.name}</div>
-//     <button class="list__button" data-action="delete" data-id="${category.id}">
-//       <span class="list__delete"></span>
-//     </button>
-//   </div>
-//   <div class="list__actions">
-//     <button class="list__action list__action--edit" data-id="${category.id}"><img src="./assets/icons/rename.svg" alt="Переименовать"></button>
-//     <button class="list__action list__action--up" data-id="${category.id}"><img src="./assets/icons/arrow.svg" alt="Вверх"></button>
-//     <button class="list__action list__action--down" data-id="${category.id}"><img src="./assets/icons/arrow.svg" alt="Вниз"></button>
-//   </div>
-// `;
-
-//     categoryList.appendChild(li);
-//   });
-
-//   // Повторно назначаем события (после перерисовки DOM)
-//   assignCategoryEvents();
-//   addSwipeListeners();
-//   addCategoryActionListeners();
-//   countCategories();
-// }
-
+// Отрисовка всех списков
 function renderCategories() {
   categoryList.innerHTML = "";
+
+  if (categories.length === 0) {
+    renderEmptyMessage(
+      categoryList,
+      "Нет списков",
+      "Нажмите на поле ввода выше, чтобы добавить новый список",
+      "./assets/icons/empty.svg",
+      "Нет списков"
+    );
+    countCategories();
+    return;
+  }
 
   categories.forEach((category) => {
     const li = document.createElement("li");
