@@ -106,27 +106,24 @@ function renderTasks(restoreActive = true) {
     (task) => task.categoryId === currentCategoryId
   );
 
-  if (tasks.length === 0) {
+  if (filtered.length === 0) {
     renderEmptyMessage(
       taskList,
       "Нет задач",
       "Нажмите на поле ввода выше, чтобы добавить новую задачу"
     );
-    countTasks();
-    return;
-  }
+  } else {
+    filtered.forEach((task) => {
+      const li = document.createElement("li");
+      li.className = "list__item";
+      li.dataset.id = task.id;
 
-  filtered.forEach((task) => {
-    const li = document.createElement("li");
-    li.className = "list__item";
-    li.dataset.id = task.id;
-
-    li.innerHTML = `
+      li.innerHTML = `
   <div class="list__item-inner">
     <label class="list__checkbox">
       <input type="checkbox" ${task.done ? "checked" : ""} data-id="${
-      task.id
-    }" />
+        task.id
+      }" />
       <span class="list__checkmark"></span>
     </label>
     <div class="list__text" data-id="${task.id}">${task.text}</div>
@@ -147,8 +144,9 @@ function renderTasks(restoreActive = true) {
   </div>
 `;
 
-    taskList.appendChild(li);
-  });
+      taskList.appendChild(li);
+    });
+  }
 
   if (restoreActive) {
     restoreActiveItem("task");
