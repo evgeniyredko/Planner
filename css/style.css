@@ -66,6 +66,11 @@ main {
   margin-block-start: 6px;
 }
 
+.logo__image {
+  inline-size: 22px;
+  block-size: 22px;
+}
+
 .header__left svg {
   margin-block-start: 7px;
 }
