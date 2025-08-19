@@ -45,6 +45,10 @@ body.theme-light .modal__item img.selected {
   outline: 2px solid #000;
 }
 
+body.theme-light .list__empty-img {
+  background-image: url(./../assets/icons/empty-light.svg);
+}
+
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter-Regular.woff2") format("woff2");

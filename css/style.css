@@ -323,7 +323,10 @@ main {
 
 .list__empty-img {
   width: 150px;
-  height: 150px;
+  height: 140px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(./../assets/icons/empty.svg);
 }
 
 .list__empty-title {

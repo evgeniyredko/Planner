@@ -28,12 +28,12 @@ window.restoreActiveItem = function (type) {
 };
 
 // Отрисовка заглушки для пустого списка
-function renderEmptyMessage(container, title, text, imgSrc, imgAlt = "") {
+function renderEmptyMessage(container, title, text) {
   const li = document.createElement("li");
   li.className = "list__empty";
   li.innerHTML = `
     <div class="list__empty-inner">
-      <img class="list__empty-img" src="${imgSrc}" alt="${imgAlt}">
+      <div class="list__empty-img"></div>
       <h3 class="list__empty-title">${title}</h3>
       <p class="list__empty-text">${text}</p>
     </div>

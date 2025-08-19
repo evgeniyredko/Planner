@@ -132,9 +132,7 @@ function renderCategories() {
     renderEmptyMessage(
       categoryList,
       "Нет списков",
-      "Нажмите на поле ввода выше, чтобы добавить новый список",
-      "./assets/icons/empty.svg",
-      "Нет списков"
+      "Нажмите на поле ввода выше, чтобы добавить новый список"
     );
     countCategories();
     return;

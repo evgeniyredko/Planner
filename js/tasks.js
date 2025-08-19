@@ -110,9 +110,7 @@ function renderTasks(restoreActive = true) {
     renderEmptyMessage(
       taskList,
       "Нет задач",
-      "Нажмите на поле ввода выше, чтобы добавить новую задачу",
-      "./assets/icons/empty.svg",
-      "Нет задач"
+      "Нажмите на поле ввода выше, чтобы добавить новую задачу"
     );
     countTasks();
     return;
